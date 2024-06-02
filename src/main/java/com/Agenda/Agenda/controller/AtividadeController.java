@@ -23,6 +23,7 @@ import com.Agenda.Agenda.model.Atividade;
 import com.Agenda.Agenda.model.Materia;
 import com.Agenda.Agenda.model.Professor;
 import com.Agenda.Agenda.repository.AtividadeRepository;
+import com.Agenda.Agenda.repository.MateriaRepository;
 
 import jakarta.validation.Valid;
 
@@ -33,6 +34,9 @@ public class AtividadeController {
 	
 	@Autowired
 	private AtividadeRepository ar;
+	
+	@Autowired
+	private MateriaRepository mr;
 	
 	// LISTAR ATIVIDADES
 
@@ -64,18 +68,21 @@ public class AtividadeController {
 		Atividade atividade = ar.findById(id);
 		ModelAndView mv = new ModelAndView("atividade/update-atividade");
 		mv.addObject("atividade", atividade) ;
+		mv.addObject("materias", mr.findAll()) ;
 		return mv;
 	}
 	
 	
 	@RequestMapping(value = "/editar-atividade", method = RequestMethod.POST)
 	public String updateAtividade(@Valid Atividade atividade, BindingResult result, RedirectAttributes attributes) {
+		Materia materia = mr.findByid(atividade.getMateria().getId());
+		atividade.setMateria(materia);
 		ar.save(atividade);
 		attributes.addFlashAttribute("success", "Atividade alterada com sucesso!");
 
 		long idlong = atividade.getId();
 		String id = "" + idlong;
-		return "redirect:/atividades";
+		return "redirect:/";
 		
 	}
 	
