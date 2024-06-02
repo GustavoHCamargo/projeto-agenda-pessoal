@@ -1,0 +1,71 @@
+body {
+
+}
+main {
+	background-image: url('img/fundo.jpg');
+	height: calc(100vh - 100px) !important;
+}
+.container {
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	max-width: 1400px !important;
+}
+
+#nav {
+	height: 100px !important;
+	font-size: 1.5em;
+}
+#agenda {
+	margin: 0 !important;
+	color: white;
+	padding: 10px;
+	border-right: 1px solid lightgray;
+	margin-right: 10px !important;
+	user-select: none;
+}
+#agenda i {
+	margin: 10px !important;
+}
+.navbar-nav {
+	display: flex;
+	gap: 10px;
+}
+.nav-item {
+	width: 200px !important;
+	color: #FFFF80 !important;
+	padding: 5px;
+	border-radius: 10px;
+	background-color: #2d3238;
+	font-weight: bold;
+}
+.selec {
+	border: 2px dashed rgb(0,0,0,0.5);
+	background-color: lightgray;
+}
+.nav-link.active{
+	color:black !important;
+}
+
+h1 {
+	font-size: 2em !important;
+	text-align: center;
+	margin: 20px !important;
+	margin-bottom: 0 !important;
+	text-transform: uppercase;
+	border-bottom: 2px solid black;
+}
+
+.table {
+	width: 100% !important;
+	text-align: center;
+	font-size: 1.2em;
+	border-radius: 10px;
+	border: 2px solid gray;
+	background: #fafafa !important;
+	opacity: 1 !important;
+}
+.table td, .table th {
+	width: 600px !important;
+}
