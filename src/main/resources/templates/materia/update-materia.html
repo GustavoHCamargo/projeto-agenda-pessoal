@@ -65,6 +65,7 @@
 							th:attr="value = ${materia.nome}" required>
 					</div>
 				</div>
+				
 				<div class="row">
 					<div class="col">
 						<label for=""><b>Dias da semana/ horário:</b> </label> <input
@@ -73,6 +74,7 @@
 							required>
 					</div>
 				</div>
+				
 				<div class="rowin">
 					<div class="col">
 						<label for=""><b>Sala:</b> </label> <input type="text"
@@ -90,6 +92,7 @@
 								th:selected="${professor.id} == ${materia.professor?.id}"></option>
 						</select>
 					</div>
+					
 				</div>
 
 				<button id="btn" type="submit" class="btn btn-success">Atualizar</button>

@@ -10,6 +10,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" th:href="@{/estilos/style.css}">
+<link rel="stylesheet" th:href="@{/estilos/upd/upd.css}">
+<link rel="stylesheet" th:href="@{/estilos/detalhes.css}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="shortcut icon" href="../img/ico-site.ico" type="image/x-icon">
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -38,80 +40,53 @@
 			</div>
 		</nav>
 	</header>
-
+	
+	<main>
 	<div class="container">
 
 		<h1>Detalhes da matéria:</h1>
 		<div th:each="materia : ${materia}" class="container">
-
-			<br>
-
-			<p>
-				<b>Matéria:</b> <span th:text="${materia.nome}"></span>
-			</p>
-			<p>
-				<b>Sala:</b> <span th:text="${materia.sala}"></span>
-			</p>
-			<p>
-				<b>Horário:</b> <span th:text="${materia.dia_horario}"></span>
-			</p>
-			<p>
-				<b>Professor:</b> <span th:text="${materia.professor != null ? materia.professor.nome : 'Professor deletado'}"></span>
-			</p>
-
-			<br> <br>
-
-
-
-
-
+			<ul id="detalhes">
+				<li><b>Matéria:</b> <span th:text="${materia.nome}"></span></li>
+				<li><b>Sala:</b> <span th:text="${materia.sala}"></span></li>
+				<li><b>Horário:</b> <span th:text="${materia.dia_horario}"></span></li>
+				<li><b>Professor:</b> <span th:text="${materia.professor != null ? materia.professor.nome : 'Professor deletado'}"></span></li>
+			</ul>
+			
+			<div id="cadastro">
 			<h2>Cadastrar atividades:</h2>
-
+			<button id="abrir" onclick="mostrarCatv()"><i class="fa-solid fa-sort-down"></i></button>
 			<th:block th:include="mensagemValidacao"></th:block>
-
-			<br>
-
+			<div id="catv">
 			<form method="post" th:object="${atividade}">
-
-				<div class="form-group">
-					<div class="row">
-
+					<div class="rowin">
 						<div class="col">
 							<label for=""><b>Atividade:</b> </label> <input type="text"
 								value="" name="nome" class="form-control" required />
 						</div>
+					</div>
 
-
+					<div class="row">
 						<div class="col">
 							<label for=""><b>Data entrega:</b></label> <input
 								type="date" value="" name="data_entrega" class="form-control" required />
-							<small class="form-text text-muted"><i>* Data de entrega.</i></small>
 						</div>
+					</div>
 
-
+					<div class="row">
 						<div class="col">
 							<label for=""><b>Descrição:</b> </label> <input type="text"
 								value="" name="descricao" class="form-control" required />
 						</div>
-
 					</div>
 
-
-
-				</div>
-
-				<button type="submit" class="btn btn-success">Adicionar
-					Atividade</button>
+						<button id="btn" type="submit" class="btn btn-success">Adicionar</button>
 			</form>
-
-
+			</div>
+			</div>
 		</div>
 
-		<br> <br>
-
 		<h2>Atividades:</h2>
-
-		<br>
 
 		<table class="table table-hover table-responsive w-auto table-striped">
 			<thead>
@@ -138,12 +113,8 @@
 			</tbody>
 		</table>
 
-
 	</div>
-
-
-	<div style="height: 100px;"></div>
-
+	</main>
 
 	<!--JavaScript bootstrap-->
 	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
@@ -153,6 +124,7 @@
 		crossorigin="anonymous">
 		
 	</script>
+	<script src="../../estilos/detalhes.js"></script>
 
 </body>
 
