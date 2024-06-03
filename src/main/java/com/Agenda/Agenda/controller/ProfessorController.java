@@ -1,5 +1,7 @@
 package com.Agenda.Agenda.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -13,6 +15,7 @@ import com.Agenda.Agenda.model.Atividade;
 import com.Agenda.Agenda.model.Materia;
 import com.Agenda.Agenda.model.Professor;
 import com.Agenda.Agenda.repository.AtividadeRepository;
+import com.Agenda.Agenda.repository.MateriaRepository;
 import com.Agenda.Agenda.repository.ProfessorRepository;
 
 import jakarta.validation.Valid;
@@ -22,6 +25,8 @@ public class ProfessorController {
 	
 	@Autowired
 	private ProfessorRepository pr; 
+	@Autowired
+	private MateriaRepository mr; 
 	
 	// CADASTRAR PROFESSOR
 		@RequestMapping(value = "/cadastrarProfessor", method = RequestMethod.GET)
@@ -81,6 +86,12 @@ public class ProfessorController {
 		@RequestMapping("/deletarProfessor")
 		public String deletarProfessor(long id) {
 			Professor professor= pr.findByid(id);
+			List<Materia> materias = mr.findByProfessor(professor);
+			// Desvincular o professor de cada matéria
+			for (Materia materia : materias) {
+				materia.setProfessor(null);
+				mr.save(materia);
+				}
 			pr.delete(professor);
 			return "redirect:/professores";
 		}

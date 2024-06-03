@@ -8,10 +8,10 @@ import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.stereotype.Repository;
 
 import com.Agenda.Agenda.model.Materia;
+import com.Agenda.Agenda.model.Professor;
 
 public interface MateriaRepository extends CrudRepository<Materia, String>{
 	Materia findByid(long id);
 	List<Materia> findByNome(String nome);
-	
-	
+	List<Materia> findByProfessor(Professor professor);
 }

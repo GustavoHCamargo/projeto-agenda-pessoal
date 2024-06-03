@@ -49,31 +49,33 @@
 		<th:block th:include="mensagemValidacao"></th:block>
 
 			<form method="post" th:object="${atividade}">
-				<div class="form-group">
+					
 					<div class="row">
-
 						<div class="col">
 							<label for=""><b>Atividade:</b> </label> 
 								<input type="text"
 								value="" name="nome" class="form-control" 
 								th:attr="value = ${atividade.nome}" required />
 						</div>
+					</div>
 
-
+					<div class="row">
 						<div class="col">
 							<label for=""><b>Data de entrega:</b></label> 
 							<input type="date" 
 							value="" name="data_entrega" class="form-control" 
 							th:attr="value = ${atividade.data_entrega}" required />
 						</div>
+					</div>
 
-
+					<div class="row">
 						<div class="col">
 							<label for=""><b>Descrição:</b> </label> 
 								<input type="text"
 								value="" name="descricao" class="form-control" 
 								th:attr="value = ${atividade.descricao}" required />
 						</div>
+					</div>
 						
 						<div id="materia" class="form-group">
                				<label for="materia">Matéria:</label>
@@ -82,9 +84,6 @@
                	   					th:text="${materia.nome}"></option>
                			 		</select>
           			  	</div>
-          			  	
-					</div>
-				</div>
 				<button id="btn" type="submit" class="btn btn-success">Atualizar</button>
 			</form>
 	</div>
