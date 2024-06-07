@@ -12,6 +12,7 @@
 	<groupId>com.Agenda</groupId>
 	<artifactId>Agenda</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>Agenda</name>
 	<description>Projeto Agenda pessoal</description>
 	<properties>
@@ -58,6 +59,17 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<mainClass>com.Agenda.Agenda.AgendaApplication</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
